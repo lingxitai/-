@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <style>
+        label{
+            width: 120px;
+            text-align: left;
+            height: 40px;
+            display: inline-block;
+            margin:auto auto;
+            padding:10px;
+        }
+        .pg_header{
+            border:5px solid darkgreen;
+            height: 200px;
+            width: 400px;
+            background-color: darkkhaki;
+            margin:20px auto
+
+
+        }
+    </style>
+</head>
+<body>
+<form action="/add_index/" method="post"><!--post请求url需要以/为结尾/-->
+    <div class="pg_header" >
+        <label for="username">输入用户名：</label>
+        <input type="text" name="username" id="username" placeholder="用户名"/><br>
+        <label for="password">输入密码：</label>
+        <input type="password" name="password" id="password" placeholder="八位数字和字母"/><br>
+        <label for="password">再次输入密码：</label>
+        <input type="password" name="password_agin" id="password" placeholder="八位数字和字母"/><br>
+        <input type="submit" value="注册" style="width: 80px;"/><apan style="color: red" >{{ warning }}</apan>
+    </div>
+</form>
+</body>
+</html>
