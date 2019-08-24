@@ -8,7 +8,14 @@
 <form>
     <div>
         <h1>用户信息</h1>
+        <ul>
+        {% for i in user_info %}
+        <li><div style="width: 200px;">{{ i.username }}</div>
+            <a target="_blank" href="/detail/?nid={{ i.id }}">详细信息</a>
 
+        </li>
+        {% endfor %}
+        </ul>
     </div>
 </form>
 </body>

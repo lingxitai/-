@@ -13,11 +13,10 @@ def index(request):
     if request.method == 'POST':
         u = request.POST.get('username')
         p = request.POST.get('password')
-        print(u, p)
-
-        user.objects.filter()
-        if u == 'root' and p == 'root1234':
-            return redirect('http://127.0.0.1:8000/admin')
+        userqueryset=user.objects.filter(username=u)
+        for info in userqueryset:
+            if p==info.password:
+                return redirect('http://127.0.0.1:8000/admin')
         else:
             warning = '输入用户名或者密码错误'
             return render(request, 'index.html', {'warning': warning})
@@ -58,3 +57,16 @@ def add_index(request):
             user.objects.create(username=u,password=p)
             warning = '注册成功：请用注册用户登录'
             return render(request, 'index.html',{'warning':warning})
+
+
+
+
+
+def user_info(request):
+    userinfo = user.objects.all()
+    return render(request,'user_info.html',{'user_info':userinfo})
+def detail(request):
+    nid=request.GET.get('nid')
+    userinfo = user.objects.filter(id=nid)
+    return render(request,'detail.html',{'userinfo':userinfo})
+
