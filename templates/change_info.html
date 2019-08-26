@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改用户信息</title>
+</head>
+<body>
+<form action="/detail/" method="post">
+    <div>
+        <h3>修改用户信息</h3>
+        {% for info in userinfo %}
+        <label for="change">用户名：</label>
+            <input type="text" name="username" value="{{ info.username }}" readonly="readonly" style="background-color: beige">
+        <label for="change">密码:</label>
+            <input type="text" name="password" value="{{ info.password }} " id="change" >
+        {% endfor %}
+        <input type="submit" value="修改"/><span style="color:red;">{{ warning }}</span>
+    </div>
+</form>
+</body>
+</html>

@@ -65,8 +65,30 @@ def add_index(request):
 def user_info(request):
     userinfo = user.objects.all()
     return render(request,'user_info.html',{'user_info':userinfo})
-def detail(request):
-    nid=request.GET.get('nid')
-    userinfo = user.objects.filter(id=nid)
+def detail(request,cc):
+    # nid=request.GET.get('nid')
+    print(request,cc)
+    userinfo = user.objects.filter(id=cc)
     return render(request,'detail.html',{'userinfo':userinfo})
-
+def change_info(request):
+    '''
+    修改成功提示后自动跳转到详细信息页面
+    :param request:
+    :return:
+    '''
+    if request.method == 'POST':
+        if len(request.POST.get('password').strip()) != 8:
+            usernamec = request.POST.get('username')
+            userinfo = user.objects.filter(username=usernamec)
+            warning = '密码长度需要为8位'
+            return render(request, 'change_info.html', {'userinfo': userinfo, 'warning': warning})
+        else:
+            usernamec=request.POST.get('username')
+            passwordc=request.POST.get('password')
+            user.objects.filter(username=usernamec).update(password=passwordc)
+            warning='修改成功'
+            return render(request,'change_success.html',{'warning':warning})
+    else:
+        nid=request.GET.get('nid')
+        userinfo=user.objects.filter(id=nid)
+        return render(request,'change_info.html',{'userinfo':userinfo})

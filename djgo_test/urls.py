@@ -22,6 +22,7 @@ urlpatterns = [
     url('index/',views.index ),
     url('add_index/',views.add_index ),
     url('user_info/', views.user_info),
-    url(r'^detail/', views.detail),
-
+    # url(r'^detail/', views.detail),
+    url(r'^detail-(\d+).html', views.detail),
+    url(r'^detail/', views.change_info),
 ]
