@@ -92,3 +92,15 @@ def change_info(request):
         nid=request.GET.get('nid')
         userinfo=user.objects.filter(id=nid)
         return render(request,'change_info.html',{'userinfo':userinfo})
+from .models import user,user_qx
+
+
+def add_quanxian(request):
+    # user_qx.objects.create(username='root',quanxian='删除',yemian='ad03')
+    # user_qx.objects.create(username='root', quanxian='修改', yemian='ad03')
+    # user_qx.objects.create(username='root', quanxian='新增', yemian='ad04')
+    # user_qx.objects.create(username='123', quanxian='修改', yemian='ad04')
+    # user_qx.objects.create(username='123', quanxian='修改', yemian='ad05')
+    # user_qx.objects.create(username='123', quanxian='新增', yemian='ad05')
+    # user_qx.objects.create(username='123', quanxian='新增', yemian='ad03')
+    return HttpResponse('增加权限成功')

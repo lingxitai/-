@@ -25,4 +25,5 @@ urlpatterns = [
     # url(r'^detail/', views.detail),
     url(r'^detail-(\d+).html', views.detail),
     url(r'^detail/', views.change_info),
+    url(r'^add_quanxian/', views.add_quanxian),
 ]
